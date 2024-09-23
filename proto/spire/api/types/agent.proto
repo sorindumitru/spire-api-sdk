@@ -4,7 +4,6 @@ option go_package = "github.com/spiffe/spire-api-sdk/proto/spire/api/types";
 
 import "spire/api/types/selector.proto";
 import "spire/api/types/spiffeid.proto";
-import "google/protobuf/wrappers.proto";
 
 message Agent {
     // Output only. SPIFFE ID of the agent.
