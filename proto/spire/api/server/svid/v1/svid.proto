@@ -5,6 +5,7 @@ option go_package = "github.com/spiffe/spire-api-sdk/proto/spire/api/server/svid
 import "spire/api/types/jwtsvid.proto";
 import "spire/api/types/spiffeid.proto";
 import "spire/api/types/status.proto";
+import "spire/api/types/witsvid.proto";
 import "spire/api/types/x509svid.proto";
 
 service SVID {
@@ -20,11 +21,23 @@ service SVID {
     // The caller must be local or present an admin X509-SVID.
     rpc MintJWTSVID(MintJWTSVIDRequest) returns (MintJWTSVIDResponse);
 
+    // Mints a one-off WIT-SVID outside of the normal node/workload
+    // registration process.
+    //
+    // The caller must be local or present an admin X509-SVID.
+    rpc MintWITSVID(MintWITSVIDRequest) returns (MintWITSVIDResponse);
+
     // Creates one or more X509-SVIDs from registration entries.
     //
     // The caller must present an active agent X509-SVID that is authorized
     // to mint the requested entries. See the Entry GetAuthorizedEntries RPC.
     rpc BatchNewX509SVID(BatchNewX509SVIDRequest) returns (BatchNewX509SVIDResponse);
+
+    // Creates one or more WIT-SVIDs from registration entries.
+    //
+    // The caller must present an active agent X509-SVID that is authorized
+    // to mint the requested entries. See the Entry GetAuthorizedEntries RPC.
+    rpc BatchNewWITSVID(BatchNewWITSVIDRequest) returns (BatchNewWITSVIDResponse);
 
     // Creates an JWT-SVID from a registration entry.
     //
@@ -77,6 +90,25 @@ message MintJWTSVIDResponse {
     spire.api.types.JWTSVID svid = 1;
 }
 
+message MintWITSVIDRequest {
+    // Required. SPIFFE ID of the JWT-SVID.
+    spire.api.types.SPIFFEID id = 1;
+
+    // Required. Public key for the cnf claim.
+    bytes public_key = 2;
+
+    // Desired TTL of the JWT-SVID, in seconds. The server default will be used
+    // if unset. The TTL is advisory only. The actual lifetime of the JWT-SVID
+    // may be lower depending on the remaining lifetime of the active SPIRE
+    // Server CA.
+    int32 ttl = 3;
+}
+
+message MintWITSVIDResponse {
+    // The newly issued WIT-SVID.
+    spire.api.types.WITSVID svid = 1;
+}
+
 message BatchNewX509SVIDRequest {
     // Required. One or more X509-SVID parameters for X509-SVID entries to
     // be signed.
@@ -90,6 +122,25 @@ message BatchNewX509SVIDResponse {
 
         // The newly created X509-SVID. This will be set if the status is OK.
         spire.api.types.X509SVID svid = 2;
+    }
+
+    // Result for each X509-SVID requested (order is maintained).
+    repeated Result results = 1;
+}
+
+message BatchNewWITSVIDRequest {
+    // Required. One or more X509-SVID parameters for X509-SVID entries to
+    // be signed.
+    repeated NewWITSVIDParams params = 1;
+}
+
+message BatchNewWITSVIDResponse {
+    message Result {
+        // The status of creating the WIT-SVID.
+        spire.api.types.Status status = 1;
+
+        // The newly created X509-SVID. This will be set if the status is OK.
+        spire.api.types.WITSVID svid = 2;
     }
 
     // Result for each X509-SVID requested (order is maintained).
@@ -140,4 +191,14 @@ message NewX509SVIDParams {
     // CSR is only used to convey the public key; other fields in the CSR are
     // ignored. The X509-SVID attributes are determined by the entry.
     bytes csr = 2;
+}
+
+message NewWITSVIDParams {
+    // Required. The entry ID for the identity being requested.
+    string entry_id = 1;
+
+    // Required. The ASN.1 DER encoded Certificate Signing Request (CSR). The
+    // CSR is only used to convey the public key; other fields in the CSR are
+    // ignored. The X509-SVID attributes are determined by the entry.
+    bytes public_key = 2;
 }
