@@ -241,6 +241,135 @@ func (x *ListEntriesResponse) GetNextPageToken() string {
 	return ""
 }
 
+type ListSPIFFEIDTemplatesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Filters the entries returned in the response.
+	Filter *ListSPIFFEIDTemplatesRequest_Filter `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
+	// An output mask indicating the entry fields set in the response.
+	OutputMask *types.EntryMask `protobuf:"bytes,2,opt,name=output_mask,json=outputMask,proto3" json:"output_mask,omitempty"`
+	// The maximum number of results to return. The server may further
+	// constrain this value, or if zero, choose its own.
+	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	// The next_page_token value returned from a previous request, if any.
+	PageToken     string `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSPIFFEIDTemplatesRequest) Reset() {
+	*x = ListSPIFFEIDTemplatesRequest{}
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSPIFFEIDTemplatesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSPIFFEIDTemplatesRequest) ProtoMessage() {}
+
+func (x *ListSPIFFEIDTemplatesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSPIFFEIDTemplatesRequest.ProtoReflect.Descriptor instead.
+func (*ListSPIFFEIDTemplatesRequest) Descriptor() ([]byte, []int) {
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListSPIFFEIDTemplatesRequest) GetFilter() *ListSPIFFEIDTemplatesRequest_Filter {
+	if x != nil {
+		return x.Filter
+	}
+	return nil
+}
+
+func (x *ListSPIFFEIDTemplatesRequest) GetOutputMask() *types.EntryMask {
+	if x != nil {
+		return x.OutputMask
+	}
+	return nil
+}
+
+func (x *ListSPIFFEIDTemplatesRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListSPIFFEIDTemplatesRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListSPIFFEIDTemplatesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The list of entries.
+	Templates []*types.SPIFFEIDTemplate `protobuf:"bytes,1,rep,name=templates,proto3" json:"templates,omitempty"`
+	// The page token for the next request. Empty if there are no more results.
+	// This field should be checked by clients even when a page_size was not
+	// requested, since the server may choose its own (see page_size).
+	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListSPIFFEIDTemplatesResponse) Reset() {
+	*x = ListSPIFFEIDTemplatesResponse{}
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSPIFFEIDTemplatesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSPIFFEIDTemplatesResponse) ProtoMessage() {}
+
+func (x *ListSPIFFEIDTemplatesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSPIFFEIDTemplatesResponse.ProtoReflect.Descriptor instead.
+func (*ListSPIFFEIDTemplatesResponse) Descriptor() ([]byte, []int) {
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ListSPIFFEIDTemplatesResponse) GetTemplates() []*types.SPIFFEIDTemplate {
+	if x != nil {
+		return x.Templates
+	}
+	return nil
+}
+
+func (x *ListSPIFFEIDTemplatesResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
 type GetEntryRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Required. ID of the entry to get.
@@ -253,7 +382,7 @@ type GetEntryRequest struct {
 
 func (x *GetEntryRequest) Reset() {
 	*x = GetEntryRequest{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[4]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -265,7 +394,7 @@ func (x *GetEntryRequest) String() string {
 func (*GetEntryRequest) ProtoMessage() {}
 
 func (x *GetEntryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[4]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -278,7 +407,7 @@ func (x *GetEntryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEntryRequest.ProtoReflect.Descriptor instead.
 func (*GetEntryRequest) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{4}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetEntryRequest) GetId() string {
@@ -308,7 +437,7 @@ type BatchCreateEntryRequest struct {
 
 func (x *BatchCreateEntryRequest) Reset() {
 	*x = BatchCreateEntryRequest{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[5]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -320,7 +449,7 @@ func (x *BatchCreateEntryRequest) String() string {
 func (*BatchCreateEntryRequest) ProtoMessage() {}
 
 func (x *BatchCreateEntryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[5]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -333,7 +462,7 @@ func (x *BatchCreateEntryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchCreateEntryRequest.ProtoReflect.Descriptor instead.
 func (*BatchCreateEntryRequest) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{5}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *BatchCreateEntryRequest) GetEntries() []*types.Entry {
@@ -360,7 +489,7 @@ type BatchCreateEntryResponse struct {
 
 func (x *BatchCreateEntryResponse) Reset() {
 	*x = BatchCreateEntryResponse{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[6]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -372,7 +501,7 @@ func (x *BatchCreateEntryResponse) String() string {
 func (*BatchCreateEntryResponse) ProtoMessage() {}
 
 func (x *BatchCreateEntryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[6]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -385,7 +514,7 @@ func (x *BatchCreateEntryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchCreateEntryResponse.ProtoReflect.Descriptor instead.
 func (*BatchCreateEntryResponse) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{6}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *BatchCreateEntryResponse) GetResults() []*BatchCreateEntryResponse_Result {
@@ -409,7 +538,7 @@ type BatchUpdateEntryRequest struct {
 
 func (x *BatchUpdateEntryRequest) Reset() {
 	*x = BatchUpdateEntryRequest{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[7]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -421,7 +550,7 @@ func (x *BatchUpdateEntryRequest) String() string {
 func (*BatchUpdateEntryRequest) ProtoMessage() {}
 
 func (x *BatchUpdateEntryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[7]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -434,7 +563,7 @@ func (x *BatchUpdateEntryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchUpdateEntryRequest.ProtoReflect.Descriptor instead.
 func (*BatchUpdateEntryRequest) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{7}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *BatchUpdateEntryRequest) GetEntries() []*types.Entry {
@@ -468,7 +597,7 @@ type BatchUpdateEntryResponse struct {
 
 func (x *BatchUpdateEntryResponse) Reset() {
 	*x = BatchUpdateEntryResponse{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[8]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -480,7 +609,7 @@ func (x *BatchUpdateEntryResponse) String() string {
 func (*BatchUpdateEntryResponse) ProtoMessage() {}
 
 func (x *BatchUpdateEntryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[8]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -493,7 +622,7 @@ func (x *BatchUpdateEntryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchUpdateEntryResponse.ProtoReflect.Descriptor instead.
 func (*BatchUpdateEntryResponse) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{8}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *BatchUpdateEntryResponse) GetResults() []*BatchUpdateEntryResponse_Result {
@@ -513,7 +642,7 @@ type BatchDeleteEntryRequest struct {
 
 func (x *BatchDeleteEntryRequest) Reset() {
 	*x = BatchDeleteEntryRequest{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[9]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -525,7 +654,7 @@ func (x *BatchDeleteEntryRequest) String() string {
 func (*BatchDeleteEntryRequest) ProtoMessage() {}
 
 func (x *BatchDeleteEntryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[9]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -538,7 +667,7 @@ func (x *BatchDeleteEntryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchDeleteEntryRequest.ProtoReflect.Descriptor instead.
 func (*BatchDeleteEntryRequest) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{9}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *BatchDeleteEntryRequest) GetIds() []string {
@@ -558,7 +687,7 @@ type BatchDeleteEntryResponse struct {
 
 func (x *BatchDeleteEntryResponse) Reset() {
 	*x = BatchDeleteEntryResponse{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[10]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -570,7 +699,7 @@ func (x *BatchDeleteEntryResponse) String() string {
 func (*BatchDeleteEntryResponse) ProtoMessage() {}
 
 func (x *BatchDeleteEntryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[10]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -583,10 +712,101 @@ func (x *BatchDeleteEntryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchDeleteEntryResponse.ProtoReflect.Descriptor instead.
 func (*BatchDeleteEntryResponse) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{10}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *BatchDeleteEntryResponse) GetResults() []*BatchDeleteEntryResponse_Result {
+	if x != nil {
+		return x.Results
+	}
+	return nil
+}
+
+type BatchCreateSPIFFEIDTemplateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The entries to be created. If no entry ID is provided, one will be
+	// generated.
+	Templates     []*types.SPIFFEIDTemplate `protobuf:"bytes,1,rep,name=templates,proto3" json:"templates,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BatchCreateSPIFFEIDTemplateRequest) Reset() {
+	*x = BatchCreateSPIFFEIDTemplateRequest{}
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BatchCreateSPIFFEIDTemplateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BatchCreateSPIFFEIDTemplateRequest) ProtoMessage() {}
+
+func (x *BatchCreateSPIFFEIDTemplateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BatchCreateSPIFFEIDTemplateRequest.ProtoReflect.Descriptor instead.
+func (*BatchCreateSPIFFEIDTemplateRequest) Descriptor() ([]byte, []int) {
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *BatchCreateSPIFFEIDTemplateRequest) GetTemplates() []*types.SPIFFEIDTemplate {
+	if x != nil {
+		return x.Templates
+	}
+	return nil
+}
+
+type BatchCreateSPIFFEIDTemplateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Result for each entry in the request (order is maintained).
+	Results       []*BatchCreateSPIFFEIDTemplateResponse_Result `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse) Reset() {
+	*x = BatchCreateSPIFFEIDTemplateResponse{}
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BatchCreateSPIFFEIDTemplateResponse) ProtoMessage() {}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BatchCreateSPIFFEIDTemplateResponse.ProtoReflect.Descriptor instead.
+func (*BatchCreateSPIFFEIDTemplateResponse) Descriptor() ([]byte, []int) {
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse) GetResults() []*BatchCreateSPIFFEIDTemplateResponse_Result {
 	if x != nil {
 		return x.Results
 	}
@@ -603,7 +823,7 @@ type GetAuthorizedEntriesRequest struct {
 
 func (x *GetAuthorizedEntriesRequest) Reset() {
 	*x = GetAuthorizedEntriesRequest{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[11]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -615,7 +835,7 @@ func (x *GetAuthorizedEntriesRequest) String() string {
 func (*GetAuthorizedEntriesRequest) ProtoMessage() {}
 
 func (x *GetAuthorizedEntriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[11]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -628,7 +848,7 @@ func (x *GetAuthorizedEntriesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAuthorizedEntriesRequest.ProtoReflect.Descriptor instead.
 func (*GetAuthorizedEntriesRequest) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{11}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetAuthorizedEntriesRequest) GetOutputMask() *types.EntryMask {
@@ -648,7 +868,7 @@ type GetAuthorizedEntriesResponse struct {
 
 func (x *GetAuthorizedEntriesResponse) Reset() {
 	*x = GetAuthorizedEntriesResponse{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[12]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -660,7 +880,7 @@ func (x *GetAuthorizedEntriesResponse) String() string {
 func (*GetAuthorizedEntriesResponse) ProtoMessage() {}
 
 func (x *GetAuthorizedEntriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[12]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -673,7 +893,7 @@ func (x *GetAuthorizedEntriesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAuthorizedEntriesResponse.ProtoReflect.Descriptor instead.
 func (*GetAuthorizedEntriesResponse) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{12}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetAuthorizedEntriesResponse) GetEntries() []*types.Entry {
@@ -696,7 +916,7 @@ type SyncAuthorizedEntriesRequest struct {
 
 func (x *SyncAuthorizedEntriesRequest) Reset() {
 	*x = SyncAuthorizedEntriesRequest{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[13]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -708,7 +928,7 @@ func (x *SyncAuthorizedEntriesRequest) String() string {
 func (*SyncAuthorizedEntriesRequest) ProtoMessage() {}
 
 func (x *SyncAuthorizedEntriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[13]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -721,7 +941,7 @@ func (x *SyncAuthorizedEntriesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SyncAuthorizedEntriesRequest.ProtoReflect.Descriptor instead.
 func (*SyncAuthorizedEntriesRequest) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{13}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SyncAuthorizedEntriesRequest) GetOutputMask() *types.EntryMask {
@@ -761,7 +981,7 @@ type SyncAuthorizedEntriesResponse struct {
 
 func (x *SyncAuthorizedEntriesResponse) Reset() {
 	*x = SyncAuthorizedEntriesResponse{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[14]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -773,7 +993,7 @@ func (x *SyncAuthorizedEntriesResponse) String() string {
 func (*SyncAuthorizedEntriesResponse) ProtoMessage() {}
 
 func (x *SyncAuthorizedEntriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[14]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -786,7 +1006,7 @@ func (x *SyncAuthorizedEntriesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SyncAuthorizedEntriesResponse.ProtoReflect.Descriptor instead.
 func (*SyncAuthorizedEntriesResponse) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{14}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *SyncAuthorizedEntriesResponse) GetEntryRevisions() []*EntryRevision {
@@ -824,7 +1044,7 @@ type EntryRevision struct {
 
 func (x *EntryRevision) Reset() {
 	*x = EntryRevision{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[15]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -836,7 +1056,7 @@ func (x *EntryRevision) String() string {
 func (*EntryRevision) ProtoMessage() {}
 
 func (x *EntryRevision) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[15]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -849,7 +1069,7 @@ func (x *EntryRevision) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EntryRevision.ProtoReflect.Descriptor instead.
 func (*EntryRevision) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{15}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *EntryRevision) GetId() string {
@@ -887,7 +1107,7 @@ type CountEntriesRequest_Filter struct {
 
 func (x *CountEntriesRequest_Filter) Reset() {
 	*x = CountEntriesRequest_Filter{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[16]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -899,7 +1119,7 @@ func (x *CountEntriesRequest_Filter) String() string {
 func (*CountEntriesRequest_Filter) ProtoMessage() {}
 
 func (x *CountEntriesRequest_Filter) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[16]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -971,7 +1191,7 @@ type ListEntriesRequest_Filter struct {
 
 func (x *ListEntriesRequest_Filter) Reset() {
 	*x = ListEntriesRequest_Filter{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[17]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -983,7 +1203,7 @@ func (x *ListEntriesRequest_Filter) String() string {
 func (*ListEntriesRequest_Filter) ProtoMessage() {}
 
 func (x *ListEntriesRequest_Filter) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[17]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1041,6 +1261,90 @@ func (x *ListEntriesRequest_Filter) GetByDownstream() *wrapperspb.BoolValue {
 	return nil
 }
 
+type ListSPIFFEIDTemplatesRequest_Filter struct {
+	state           protoimpl.MessageState    `protogen:"open.v1"`
+	BySpiffeId      *types.SPIFFEID           `protobuf:"bytes,1,opt,name=by_spiffe_id,json=bySpiffeId,proto3" json:"by_spiffe_id,omitempty"`
+	ByParentId      *types.SPIFFEID           `protobuf:"bytes,2,opt,name=by_parent_id,json=byParentId,proto3" json:"by_parent_id,omitempty"`
+	BySelectors     *types.SelectorMatch      `protobuf:"bytes,3,opt,name=by_selectors,json=bySelectors,proto3" json:"by_selectors,omitempty"`
+	ByFederatesWith *types.FederatesWithMatch `protobuf:"bytes,4,opt,name=by_federates_with,json=byFederatesWith,proto3" json:"by_federates_with,omitempty"`
+	ByHint          *wrapperspb.StringValue   `protobuf:"bytes,5,opt,name=by_hint,json=byHint,proto3" json:"by_hint,omitempty"`
+	ByDownstream    *wrapperspb.BoolValue     `protobuf:"bytes,6,opt,name=by_downstream,json=byDownstream,proto3" json:"by_downstream,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) Reset() {
+	*x = ListSPIFFEIDTemplatesRequest_Filter{}
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListSPIFFEIDTemplatesRequest_Filter) ProtoMessage() {}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) ProtoReflect() protoreflect.Message {
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListSPIFFEIDTemplatesRequest_Filter.ProtoReflect.Descriptor instead.
+func (*ListSPIFFEIDTemplatesRequest_Filter) Descriptor() ([]byte, []int) {
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{4, 0}
+}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) GetBySpiffeId() *types.SPIFFEID {
+	if x != nil {
+		return x.BySpiffeId
+	}
+	return nil
+}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) GetByParentId() *types.SPIFFEID {
+	if x != nil {
+		return x.ByParentId
+	}
+	return nil
+}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) GetBySelectors() *types.SelectorMatch {
+	if x != nil {
+		return x.BySelectors
+	}
+	return nil
+}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) GetByFederatesWith() *types.FederatesWithMatch {
+	if x != nil {
+		return x.ByFederatesWith
+	}
+	return nil
+}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) GetByHint() *wrapperspb.StringValue {
+	if x != nil {
+		return x.ByHint
+	}
+	return nil
+}
+
+func (x *ListSPIFFEIDTemplatesRequest_Filter) GetByDownstream() *wrapperspb.BoolValue {
+	if x != nil {
+		return x.ByDownstream
+	}
+	return nil
+}
+
 type BatchCreateEntryResponse_Result struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// The status of creating the entry. If status code will be
@@ -1058,7 +1362,7 @@ type BatchCreateEntryResponse_Result struct {
 
 func (x *BatchCreateEntryResponse_Result) Reset() {
 	*x = BatchCreateEntryResponse_Result{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[18]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1070,7 +1374,7 @@ func (x *BatchCreateEntryResponse_Result) String() string {
 func (*BatchCreateEntryResponse_Result) ProtoMessage() {}
 
 func (x *BatchCreateEntryResponse_Result) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[18]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1083,7 +1387,7 @@ func (x *BatchCreateEntryResponse_Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchCreateEntryResponse_Result.ProtoReflect.Descriptor instead.
 func (*BatchCreateEntryResponse_Result) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{6, 0}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{8, 0}
 }
 
 func (x *BatchCreateEntryResponse_Result) GetStatus() *types.Status {
@@ -1114,7 +1418,7 @@ type BatchUpdateEntryResponse_Result struct {
 
 func (x *BatchUpdateEntryResponse_Result) Reset() {
 	*x = BatchUpdateEntryResponse_Result{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[19]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1126,7 +1430,7 @@ func (x *BatchUpdateEntryResponse_Result) String() string {
 func (*BatchUpdateEntryResponse_Result) ProtoMessage() {}
 
 func (x *BatchUpdateEntryResponse_Result) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[19]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1139,7 +1443,7 @@ func (x *BatchUpdateEntryResponse_Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchUpdateEntryResponse_Result.ProtoReflect.Descriptor instead.
 func (*BatchUpdateEntryResponse_Result) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{8, 0}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{10, 0}
 }
 
 func (x *BatchUpdateEntryResponse_Result) GetStatus() *types.Status {
@@ -1168,7 +1472,7 @@ type BatchDeleteEntryResponse_Result struct {
 
 func (x *BatchDeleteEntryResponse_Result) Reset() {
 	*x = BatchDeleteEntryResponse_Result{}
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[20]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1180,7 +1484,7 @@ func (x *BatchDeleteEntryResponse_Result) String() string {
 func (*BatchDeleteEntryResponse_Result) ProtoMessage() {}
 
 func (x *BatchDeleteEntryResponse_Result) ProtoReflect() protoreflect.Message {
-	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[20]
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1193,7 +1497,7 @@ func (x *BatchDeleteEntryResponse_Result) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchDeleteEntryResponse_Result.ProtoReflect.Descriptor instead.
 func (*BatchDeleteEntryResponse_Result) Descriptor() ([]byte, []int) {
-	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{10, 0}
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{12, 0}
 }
 
 func (x *BatchDeleteEntryResponse_Result) GetStatus() *types.Status {
@@ -1210,11 +1514,70 @@ func (x *BatchDeleteEntryResponse_Result) GetId() string {
 	return ""
 }
 
+type BatchCreateSPIFFEIDTemplateResponse_Result struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The status of creating the entry. If status code will be
+	// ALREADY_EXISTS if a similar entry already exists. An entry is
+	// similar if it has the same spiffe_id, parent_id, and selectors.
+	Status *types.Status `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	// The entry that was created (.e.g status code is OK) or that already
+	// exists (i.e. status code is ALREADY_EXISTS).
+	//
+	// If the status code is any other value, this field will not be set.
+	Template      *types.SPIFFEIDTemplate `protobuf:"bytes,2,opt,name=template,proto3" json:"template,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse_Result) Reset() {
+	*x = BatchCreateSPIFFEIDTemplateResponse_Result{}
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse_Result) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BatchCreateSPIFFEIDTemplateResponse_Result) ProtoMessage() {}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse_Result) ProtoReflect() protoreflect.Message {
+	mi := &file_spire_api_server_entry_v1_entry_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BatchCreateSPIFFEIDTemplateResponse_Result.ProtoReflect.Descriptor instead.
+func (*BatchCreateSPIFFEIDTemplateResponse_Result) Descriptor() ([]byte, []int) {
+	return file_spire_api_server_entry_v1_entry_proto_rawDescGZIP(), []int{14, 0}
+}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse_Result) GetStatus() *types.Status {
+	if x != nil {
+		return x.Status
+	}
+	return nil
+}
+
+func (x *BatchCreateSPIFFEIDTemplateResponse_Result) GetTemplate() *types.SPIFFEIDTemplate {
+	if x != nil {
+		return x.Template
+	}
+	return nil
+}
+
 var File_spire_api_server_entry_v1_entry_proto protoreflect.FileDescriptor
 
 const file_spire_api_server_entry_v1_entry_proto_rawDesc = "" +
 	"\n" +
-	"%spire/api/server/entry/v1/entry.proto\x12\x19spire.api.server.entry.v1\x1a\x1bspire/api/types/entry.proto\x1a#spire/api/types/federateswith.proto\x1a\x1espire/api/types/selector.proto\x1a\x1espire/api/types/spiffeid.proto\x1a\x1cspire/api/types/status.proto\x1a\x1egoogle/protobuf/wrappers.proto\"\xf5\x03\n" +
+	"%spire/api/server/entry/v1/entry.proto\x12\x19spire.api.server.entry.v1\x1a\x1bspire/api/types/entry.proto\x1a#spire/api/types/federateswith.proto\x1a\x1espire/api/types/selector.proto\x1a\x1espire/api/types/spiffeid.proto\x1a&spire/api/types/spiffeidtemplate.proto\x1a\x1cspire/api/types/status.proto\x1a\x1egoogle/protobuf/wrappers.proto\"\xf5\x03\n" +
 	"\x13CountEntriesRequest\x12M\n" +
 	"\x06filter\x18\x01 \x01(\v25.spire.api.server.entry.v1.CountEntriesRequest.FilterR\x06filter\x1a\x8e\x03\n" +
 	"\x06Filter\x12;\n" +
@@ -1246,6 +1609,25 @@ const file_spire_api_server_entry_v1_entry_proto_rawDesc = "" +
 	"\rby_downstream\x18\x06 \x01(\v2\x1a.google.protobuf.BoolValueR\fbyDownstream\"o\n" +
 	"\x13ListEntriesResponse\x120\n" +
 	"\aentries\x18\x01 \x03(\v2\x16.spire.api.types.EntryR\aentries\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\x80\x05\n" +
+	"\x1cListSPIFFEIDTemplatesRequest\x12V\n" +
+	"\x06filter\x18\x01 \x01(\v2>.spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.FilterR\x06filter\x12;\n" +
+	"\voutput_mask\x18\x02 \x01(\v2\x1a.spire.api.types.EntryMaskR\n" +
+	"outputMask\x12\x1b\n" +
+	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x04 \x01(\tR\tpageToken\x1a\x8e\x03\n" +
+	"\x06Filter\x12;\n" +
+	"\fby_spiffe_id\x18\x01 \x01(\v2\x19.spire.api.types.SPIFFEIDR\n" +
+	"bySpiffeId\x12;\n" +
+	"\fby_parent_id\x18\x02 \x01(\v2\x19.spire.api.types.SPIFFEIDR\n" +
+	"byParentId\x12A\n" +
+	"\fby_selectors\x18\x03 \x01(\v2\x1e.spire.api.types.SelectorMatchR\vbySelectors\x12O\n" +
+	"\x11by_federates_with\x18\x04 \x01(\v2#.spire.api.types.FederatesWithMatchR\x0fbyFederatesWith\x125\n" +
+	"\aby_hint\x18\x05 \x01(\v2\x1c.google.protobuf.StringValueR\x06byHint\x12?\n" +
+	"\rby_downstream\x18\x06 \x01(\v2\x1a.google.protobuf.BoolValueR\fbyDownstream\"\x88\x01\n" +
+	"\x1dListSPIFFEIDTemplatesResponse\x12?\n" +
+	"\ttemplates\x18\x01 \x03(\v2!.spire.api.types.SPIFFEIDTemplateR\ttemplates\x12&\n" +
 	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"^\n" +
 	"\x0fGetEntryRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12;\n" +
@@ -1277,7 +1659,14 @@ const file_spire_api_server_entry_v1_entry_proto_rawDesc = "" +
 	"\aresults\x18\x01 \x03(\v2:.spire.api.server.entry.v1.BatchDeleteEntryResponse.ResultR\aresults\x1aI\n" +
 	"\x06Result\x12/\n" +
 	"\x06status\x18\x01 \x01(\v2\x17.spire.api.types.StatusR\x06status\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"Z\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"e\n" +
+	"\"BatchCreateSPIFFEIDTemplateRequest\x12?\n" +
+	"\ttemplates\x18\x01 \x03(\v2!.spire.api.types.SPIFFEIDTemplateR\ttemplates\"\x80\x02\n" +
+	"#BatchCreateSPIFFEIDTemplateResponse\x12_\n" +
+	"\aresults\x18\x01 \x03(\v2E.spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse.ResultR\aresults\x1ax\n" +
+	"\x06Result\x12/\n" +
+	"\x06status\x18\x01 \x01(\v2\x17.spire.api.types.StatusR\x06status\x12=\n" +
+	"\btemplate\x18\x02 \x01(\v2!.spire.api.types.SPIFFEIDTemplateR\btemplate\"Z\n" +
 	"\x1bGetAuthorizedEntriesRequest\x12;\n" +
 	"\voutput_mask\x18\x01 \x01(\v2\x1a.spire.api.types.EntryMaskR\n" +
 	"outputMask\"P\n" +
@@ -1295,14 +1684,16 @@ const file_spire_api_server_entry_v1_entry_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
 	"\x0frevision_number\x18\x02 \x01(\x03R\x0erevisionNumber\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\x03R\tcreatedAt2\xc8\a\n" +
+	"created_at\x18\x03 \x01(\x03R\tcreatedAt2\xf4\t\n" +
 	"\x05Entry\x12o\n" +
 	"\fCountEntries\x12..spire.api.server.entry.v1.CountEntriesRequest\x1a/.spire.api.server.entry.v1.CountEntriesResponse\x12l\n" +
 	"\vListEntries\x12-.spire.api.server.entry.v1.ListEntriesRequest\x1a..spire.api.server.entry.v1.ListEntriesResponse\x12N\n" +
 	"\bGetEntry\x12*.spire.api.server.entry.v1.GetEntryRequest\x1a\x16.spire.api.types.Entry\x12{\n" +
 	"\x10BatchCreateEntry\x122.spire.api.server.entry.v1.BatchCreateEntryRequest\x1a3.spire.api.server.entry.v1.BatchCreateEntryResponse\x12{\n" +
 	"\x10BatchUpdateEntry\x122.spire.api.server.entry.v1.BatchUpdateEntryRequest\x1a3.spire.api.server.entry.v1.BatchUpdateEntryResponse\x12{\n" +
-	"\x10BatchDeleteEntry\x122.spire.api.server.entry.v1.BatchDeleteEntryRequest\x1a3.spire.api.server.entry.v1.BatchDeleteEntryResponse\x12\x87\x01\n" +
+	"\x10BatchDeleteEntry\x122.spire.api.server.entry.v1.BatchDeleteEntryRequest\x1a3.spire.api.server.entry.v1.BatchDeleteEntryResponse\x12\x9c\x01\n" +
+	"\x1bBatchCreateSPIFFEIDTemplate\x12=.spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateRequest\x1a>.spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse\x12\x8a\x01\n" +
+	"\x15ListSPIFFEIDTemplates\x127.spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest\x1a8.spire.api.server.entry.v1.ListSPIFFEIDTemplatesResponse\x12\x87\x01\n" +
 	"\x14GetAuthorizedEntries\x126.spire.api.server.entry.v1.GetAuthorizedEntriesRequest\x1a7.spire.api.server.entry.v1.GetAuthorizedEntriesResponse\x12\x8e\x01\n" +
 	"\x15SyncAuthorizedEntries\x127.spire.api.server.entry.v1.SyncAuthorizedEntriesRequest\x1a8.spire.api.server.entry.v1.SyncAuthorizedEntriesResponse(\x010\x01BIZGgithub.com/spiffe/spire-api-sdk/proto/spire/api/server/entry/v1;entryv1b\x06proto3"
 
@@ -1318,95 +1709,119 @@ func file_spire_api_server_entry_v1_entry_proto_rawDescGZIP() []byte {
 	return file_spire_api_server_entry_v1_entry_proto_rawDescData
 }
 
-var file_spire_api_server_entry_v1_entry_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_spire_api_server_entry_v1_entry_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_spire_api_server_entry_v1_entry_proto_goTypes = []any{
-	(*CountEntriesRequest)(nil),             // 0: spire.api.server.entry.v1.CountEntriesRequest
-	(*CountEntriesResponse)(nil),            // 1: spire.api.server.entry.v1.CountEntriesResponse
-	(*ListEntriesRequest)(nil),              // 2: spire.api.server.entry.v1.ListEntriesRequest
-	(*ListEntriesResponse)(nil),             // 3: spire.api.server.entry.v1.ListEntriesResponse
-	(*GetEntryRequest)(nil),                 // 4: spire.api.server.entry.v1.GetEntryRequest
-	(*BatchCreateEntryRequest)(nil),         // 5: spire.api.server.entry.v1.BatchCreateEntryRequest
-	(*BatchCreateEntryResponse)(nil),        // 6: spire.api.server.entry.v1.BatchCreateEntryResponse
-	(*BatchUpdateEntryRequest)(nil),         // 7: spire.api.server.entry.v1.BatchUpdateEntryRequest
-	(*BatchUpdateEntryResponse)(nil),        // 8: spire.api.server.entry.v1.BatchUpdateEntryResponse
-	(*BatchDeleteEntryRequest)(nil),         // 9: spire.api.server.entry.v1.BatchDeleteEntryRequest
-	(*BatchDeleteEntryResponse)(nil),        // 10: spire.api.server.entry.v1.BatchDeleteEntryResponse
-	(*GetAuthorizedEntriesRequest)(nil),     // 11: spire.api.server.entry.v1.GetAuthorizedEntriesRequest
-	(*GetAuthorizedEntriesResponse)(nil),    // 12: spire.api.server.entry.v1.GetAuthorizedEntriesResponse
-	(*SyncAuthorizedEntriesRequest)(nil),    // 13: spire.api.server.entry.v1.SyncAuthorizedEntriesRequest
-	(*SyncAuthorizedEntriesResponse)(nil),   // 14: spire.api.server.entry.v1.SyncAuthorizedEntriesResponse
-	(*EntryRevision)(nil),                   // 15: spire.api.server.entry.v1.EntryRevision
-	(*CountEntriesRequest_Filter)(nil),      // 16: spire.api.server.entry.v1.CountEntriesRequest.Filter
-	(*ListEntriesRequest_Filter)(nil),       // 17: spire.api.server.entry.v1.ListEntriesRequest.Filter
-	(*BatchCreateEntryResponse_Result)(nil), // 18: spire.api.server.entry.v1.BatchCreateEntryResponse.Result
-	(*BatchUpdateEntryResponse_Result)(nil), // 19: spire.api.server.entry.v1.BatchUpdateEntryResponse.Result
-	(*BatchDeleteEntryResponse_Result)(nil), // 20: spire.api.server.entry.v1.BatchDeleteEntryResponse.Result
-	(*types.EntryMask)(nil),                 // 21: spire.api.types.EntryMask
-	(*types.Entry)(nil),                     // 22: spire.api.types.Entry
-	(*types.SPIFFEID)(nil),                  // 23: spire.api.types.SPIFFEID
-	(*types.SelectorMatch)(nil),             // 24: spire.api.types.SelectorMatch
-	(*types.FederatesWithMatch)(nil),        // 25: spire.api.types.FederatesWithMatch
-	(*wrapperspb.StringValue)(nil),          // 26: google.protobuf.StringValue
-	(*wrapperspb.BoolValue)(nil),            // 27: google.protobuf.BoolValue
-	(*types.Status)(nil),                    // 28: spire.api.types.Status
+	(*CountEntriesRequest)(nil),                        // 0: spire.api.server.entry.v1.CountEntriesRequest
+	(*CountEntriesResponse)(nil),                       // 1: spire.api.server.entry.v1.CountEntriesResponse
+	(*ListEntriesRequest)(nil),                         // 2: spire.api.server.entry.v1.ListEntriesRequest
+	(*ListEntriesResponse)(nil),                        // 3: spire.api.server.entry.v1.ListEntriesResponse
+	(*ListSPIFFEIDTemplatesRequest)(nil),               // 4: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest
+	(*ListSPIFFEIDTemplatesResponse)(nil),              // 5: spire.api.server.entry.v1.ListSPIFFEIDTemplatesResponse
+	(*GetEntryRequest)(nil),                            // 6: spire.api.server.entry.v1.GetEntryRequest
+	(*BatchCreateEntryRequest)(nil),                    // 7: spire.api.server.entry.v1.BatchCreateEntryRequest
+	(*BatchCreateEntryResponse)(nil),                   // 8: spire.api.server.entry.v1.BatchCreateEntryResponse
+	(*BatchUpdateEntryRequest)(nil),                    // 9: spire.api.server.entry.v1.BatchUpdateEntryRequest
+	(*BatchUpdateEntryResponse)(nil),                   // 10: spire.api.server.entry.v1.BatchUpdateEntryResponse
+	(*BatchDeleteEntryRequest)(nil),                    // 11: spire.api.server.entry.v1.BatchDeleteEntryRequest
+	(*BatchDeleteEntryResponse)(nil),                   // 12: spire.api.server.entry.v1.BatchDeleteEntryResponse
+	(*BatchCreateSPIFFEIDTemplateRequest)(nil),         // 13: spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateRequest
+	(*BatchCreateSPIFFEIDTemplateResponse)(nil),        // 14: spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse
+	(*GetAuthorizedEntriesRequest)(nil),                // 15: spire.api.server.entry.v1.GetAuthorizedEntriesRequest
+	(*GetAuthorizedEntriesResponse)(nil),               // 16: spire.api.server.entry.v1.GetAuthorizedEntriesResponse
+	(*SyncAuthorizedEntriesRequest)(nil),               // 17: spire.api.server.entry.v1.SyncAuthorizedEntriesRequest
+	(*SyncAuthorizedEntriesResponse)(nil),              // 18: spire.api.server.entry.v1.SyncAuthorizedEntriesResponse
+	(*EntryRevision)(nil),                              // 19: spire.api.server.entry.v1.EntryRevision
+	(*CountEntriesRequest_Filter)(nil),                 // 20: spire.api.server.entry.v1.CountEntriesRequest.Filter
+	(*ListEntriesRequest_Filter)(nil),                  // 21: spire.api.server.entry.v1.ListEntriesRequest.Filter
+	(*ListSPIFFEIDTemplatesRequest_Filter)(nil),        // 22: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.Filter
+	(*BatchCreateEntryResponse_Result)(nil),            // 23: spire.api.server.entry.v1.BatchCreateEntryResponse.Result
+	(*BatchUpdateEntryResponse_Result)(nil),            // 24: spire.api.server.entry.v1.BatchUpdateEntryResponse.Result
+	(*BatchDeleteEntryResponse_Result)(nil),            // 25: spire.api.server.entry.v1.BatchDeleteEntryResponse.Result
+	(*BatchCreateSPIFFEIDTemplateResponse_Result)(nil), // 26: spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse.Result
+	(*types.EntryMask)(nil),                            // 27: spire.api.types.EntryMask
+	(*types.Entry)(nil),                                // 28: spire.api.types.Entry
+	(*types.SPIFFEIDTemplate)(nil),                     // 29: spire.api.types.SPIFFEIDTemplate
+	(*types.SPIFFEID)(nil),                             // 30: spire.api.types.SPIFFEID
+	(*types.SelectorMatch)(nil),                        // 31: spire.api.types.SelectorMatch
+	(*types.FederatesWithMatch)(nil),                   // 32: spire.api.types.FederatesWithMatch
+	(*wrapperspb.StringValue)(nil),                     // 33: google.protobuf.StringValue
+	(*wrapperspb.BoolValue)(nil),                       // 34: google.protobuf.BoolValue
+	(*types.Status)(nil),                               // 35: spire.api.types.Status
 }
 var file_spire_api_server_entry_v1_entry_proto_depIdxs = []int32{
-	16, // 0: spire.api.server.entry.v1.CountEntriesRequest.filter:type_name -> spire.api.server.entry.v1.CountEntriesRequest.Filter
-	17, // 1: spire.api.server.entry.v1.ListEntriesRequest.filter:type_name -> spire.api.server.entry.v1.ListEntriesRequest.Filter
-	21, // 2: spire.api.server.entry.v1.ListEntriesRequest.output_mask:type_name -> spire.api.types.EntryMask
-	22, // 3: spire.api.server.entry.v1.ListEntriesResponse.entries:type_name -> spire.api.types.Entry
-	21, // 4: spire.api.server.entry.v1.GetEntryRequest.output_mask:type_name -> spire.api.types.EntryMask
-	22, // 5: spire.api.server.entry.v1.BatchCreateEntryRequest.entries:type_name -> spire.api.types.Entry
-	21, // 6: spire.api.server.entry.v1.BatchCreateEntryRequest.output_mask:type_name -> spire.api.types.EntryMask
-	18, // 7: spire.api.server.entry.v1.BatchCreateEntryResponse.results:type_name -> spire.api.server.entry.v1.BatchCreateEntryResponse.Result
-	22, // 8: spire.api.server.entry.v1.BatchUpdateEntryRequest.entries:type_name -> spire.api.types.Entry
-	21, // 9: spire.api.server.entry.v1.BatchUpdateEntryRequest.input_mask:type_name -> spire.api.types.EntryMask
-	21, // 10: spire.api.server.entry.v1.BatchUpdateEntryRequest.output_mask:type_name -> spire.api.types.EntryMask
-	19, // 11: spire.api.server.entry.v1.BatchUpdateEntryResponse.results:type_name -> spire.api.server.entry.v1.BatchUpdateEntryResponse.Result
-	20, // 12: spire.api.server.entry.v1.BatchDeleteEntryResponse.results:type_name -> spire.api.server.entry.v1.BatchDeleteEntryResponse.Result
-	21, // 13: spire.api.server.entry.v1.GetAuthorizedEntriesRequest.output_mask:type_name -> spire.api.types.EntryMask
-	22, // 14: spire.api.server.entry.v1.GetAuthorizedEntriesResponse.entries:type_name -> spire.api.types.Entry
-	21, // 15: spire.api.server.entry.v1.SyncAuthorizedEntriesRequest.output_mask:type_name -> spire.api.types.EntryMask
-	15, // 16: spire.api.server.entry.v1.SyncAuthorizedEntriesResponse.entry_revisions:type_name -> spire.api.server.entry.v1.EntryRevision
-	22, // 17: spire.api.server.entry.v1.SyncAuthorizedEntriesResponse.entries:type_name -> spire.api.types.Entry
-	23, // 18: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_spiffe_id:type_name -> spire.api.types.SPIFFEID
-	23, // 19: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_parent_id:type_name -> spire.api.types.SPIFFEID
-	24, // 20: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_selectors:type_name -> spire.api.types.SelectorMatch
-	25, // 21: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_federates_with:type_name -> spire.api.types.FederatesWithMatch
-	26, // 22: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_hint:type_name -> google.protobuf.StringValue
-	27, // 23: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_downstream:type_name -> google.protobuf.BoolValue
-	23, // 24: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_spiffe_id:type_name -> spire.api.types.SPIFFEID
-	23, // 25: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_parent_id:type_name -> spire.api.types.SPIFFEID
-	24, // 26: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_selectors:type_name -> spire.api.types.SelectorMatch
-	25, // 27: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_federates_with:type_name -> spire.api.types.FederatesWithMatch
-	26, // 28: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_hint:type_name -> google.protobuf.StringValue
-	27, // 29: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_downstream:type_name -> google.protobuf.BoolValue
-	28, // 30: spire.api.server.entry.v1.BatchCreateEntryResponse.Result.status:type_name -> spire.api.types.Status
-	22, // 31: spire.api.server.entry.v1.BatchCreateEntryResponse.Result.entry:type_name -> spire.api.types.Entry
-	28, // 32: spire.api.server.entry.v1.BatchUpdateEntryResponse.Result.status:type_name -> spire.api.types.Status
-	22, // 33: spire.api.server.entry.v1.BatchUpdateEntryResponse.Result.entry:type_name -> spire.api.types.Entry
-	28, // 34: spire.api.server.entry.v1.BatchDeleteEntryResponse.Result.status:type_name -> spire.api.types.Status
-	0,  // 35: spire.api.server.entry.v1.Entry.CountEntries:input_type -> spire.api.server.entry.v1.CountEntriesRequest
-	2,  // 36: spire.api.server.entry.v1.Entry.ListEntries:input_type -> spire.api.server.entry.v1.ListEntriesRequest
-	4,  // 37: spire.api.server.entry.v1.Entry.GetEntry:input_type -> spire.api.server.entry.v1.GetEntryRequest
-	5,  // 38: spire.api.server.entry.v1.Entry.BatchCreateEntry:input_type -> spire.api.server.entry.v1.BatchCreateEntryRequest
-	7,  // 39: spire.api.server.entry.v1.Entry.BatchUpdateEntry:input_type -> spire.api.server.entry.v1.BatchUpdateEntryRequest
-	9,  // 40: spire.api.server.entry.v1.Entry.BatchDeleteEntry:input_type -> spire.api.server.entry.v1.BatchDeleteEntryRequest
-	11, // 41: spire.api.server.entry.v1.Entry.GetAuthorizedEntries:input_type -> spire.api.server.entry.v1.GetAuthorizedEntriesRequest
-	13, // 42: spire.api.server.entry.v1.Entry.SyncAuthorizedEntries:input_type -> spire.api.server.entry.v1.SyncAuthorizedEntriesRequest
-	1,  // 43: spire.api.server.entry.v1.Entry.CountEntries:output_type -> spire.api.server.entry.v1.CountEntriesResponse
-	3,  // 44: spire.api.server.entry.v1.Entry.ListEntries:output_type -> spire.api.server.entry.v1.ListEntriesResponse
-	22, // 45: spire.api.server.entry.v1.Entry.GetEntry:output_type -> spire.api.types.Entry
-	6,  // 46: spire.api.server.entry.v1.Entry.BatchCreateEntry:output_type -> spire.api.server.entry.v1.BatchCreateEntryResponse
-	8,  // 47: spire.api.server.entry.v1.Entry.BatchUpdateEntry:output_type -> spire.api.server.entry.v1.BatchUpdateEntryResponse
-	10, // 48: spire.api.server.entry.v1.Entry.BatchDeleteEntry:output_type -> spire.api.server.entry.v1.BatchDeleteEntryResponse
-	12, // 49: spire.api.server.entry.v1.Entry.GetAuthorizedEntries:output_type -> spire.api.server.entry.v1.GetAuthorizedEntriesResponse
-	14, // 50: spire.api.server.entry.v1.Entry.SyncAuthorizedEntries:output_type -> spire.api.server.entry.v1.SyncAuthorizedEntriesResponse
-	43, // [43:51] is the sub-list for method output_type
-	35, // [35:43] is the sub-list for method input_type
-	35, // [35:35] is the sub-list for extension type_name
-	35, // [35:35] is the sub-list for extension extendee
-	0,  // [0:35] is the sub-list for field type_name
+	20, // 0: spire.api.server.entry.v1.CountEntriesRequest.filter:type_name -> spire.api.server.entry.v1.CountEntriesRequest.Filter
+	21, // 1: spire.api.server.entry.v1.ListEntriesRequest.filter:type_name -> spire.api.server.entry.v1.ListEntriesRequest.Filter
+	27, // 2: spire.api.server.entry.v1.ListEntriesRequest.output_mask:type_name -> spire.api.types.EntryMask
+	28, // 3: spire.api.server.entry.v1.ListEntriesResponse.entries:type_name -> spire.api.types.Entry
+	22, // 4: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.filter:type_name -> spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.Filter
+	27, // 5: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.output_mask:type_name -> spire.api.types.EntryMask
+	29, // 6: spire.api.server.entry.v1.ListSPIFFEIDTemplatesResponse.templates:type_name -> spire.api.types.SPIFFEIDTemplate
+	27, // 7: spire.api.server.entry.v1.GetEntryRequest.output_mask:type_name -> spire.api.types.EntryMask
+	28, // 8: spire.api.server.entry.v1.BatchCreateEntryRequest.entries:type_name -> spire.api.types.Entry
+	27, // 9: spire.api.server.entry.v1.BatchCreateEntryRequest.output_mask:type_name -> spire.api.types.EntryMask
+	23, // 10: spire.api.server.entry.v1.BatchCreateEntryResponse.results:type_name -> spire.api.server.entry.v1.BatchCreateEntryResponse.Result
+	28, // 11: spire.api.server.entry.v1.BatchUpdateEntryRequest.entries:type_name -> spire.api.types.Entry
+	27, // 12: spire.api.server.entry.v1.BatchUpdateEntryRequest.input_mask:type_name -> spire.api.types.EntryMask
+	27, // 13: spire.api.server.entry.v1.BatchUpdateEntryRequest.output_mask:type_name -> spire.api.types.EntryMask
+	24, // 14: spire.api.server.entry.v1.BatchUpdateEntryResponse.results:type_name -> spire.api.server.entry.v1.BatchUpdateEntryResponse.Result
+	25, // 15: spire.api.server.entry.v1.BatchDeleteEntryResponse.results:type_name -> spire.api.server.entry.v1.BatchDeleteEntryResponse.Result
+	29, // 16: spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateRequest.templates:type_name -> spire.api.types.SPIFFEIDTemplate
+	26, // 17: spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse.results:type_name -> spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse.Result
+	27, // 18: spire.api.server.entry.v1.GetAuthorizedEntriesRequest.output_mask:type_name -> spire.api.types.EntryMask
+	28, // 19: spire.api.server.entry.v1.GetAuthorizedEntriesResponse.entries:type_name -> spire.api.types.Entry
+	27, // 20: spire.api.server.entry.v1.SyncAuthorizedEntriesRequest.output_mask:type_name -> spire.api.types.EntryMask
+	19, // 21: spire.api.server.entry.v1.SyncAuthorizedEntriesResponse.entry_revisions:type_name -> spire.api.server.entry.v1.EntryRevision
+	28, // 22: spire.api.server.entry.v1.SyncAuthorizedEntriesResponse.entries:type_name -> spire.api.types.Entry
+	30, // 23: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_spiffe_id:type_name -> spire.api.types.SPIFFEID
+	30, // 24: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_parent_id:type_name -> spire.api.types.SPIFFEID
+	31, // 25: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_selectors:type_name -> spire.api.types.SelectorMatch
+	32, // 26: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_federates_with:type_name -> spire.api.types.FederatesWithMatch
+	33, // 27: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_hint:type_name -> google.protobuf.StringValue
+	34, // 28: spire.api.server.entry.v1.CountEntriesRequest.Filter.by_downstream:type_name -> google.protobuf.BoolValue
+	30, // 29: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_spiffe_id:type_name -> spire.api.types.SPIFFEID
+	30, // 30: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_parent_id:type_name -> spire.api.types.SPIFFEID
+	31, // 31: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_selectors:type_name -> spire.api.types.SelectorMatch
+	32, // 32: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_federates_with:type_name -> spire.api.types.FederatesWithMatch
+	33, // 33: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_hint:type_name -> google.protobuf.StringValue
+	34, // 34: spire.api.server.entry.v1.ListEntriesRequest.Filter.by_downstream:type_name -> google.protobuf.BoolValue
+	30, // 35: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.Filter.by_spiffe_id:type_name -> spire.api.types.SPIFFEID
+	30, // 36: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.Filter.by_parent_id:type_name -> spire.api.types.SPIFFEID
+	31, // 37: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.Filter.by_selectors:type_name -> spire.api.types.SelectorMatch
+	32, // 38: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.Filter.by_federates_with:type_name -> spire.api.types.FederatesWithMatch
+	33, // 39: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.Filter.by_hint:type_name -> google.protobuf.StringValue
+	34, // 40: spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest.Filter.by_downstream:type_name -> google.protobuf.BoolValue
+	35, // 41: spire.api.server.entry.v1.BatchCreateEntryResponse.Result.status:type_name -> spire.api.types.Status
+	28, // 42: spire.api.server.entry.v1.BatchCreateEntryResponse.Result.entry:type_name -> spire.api.types.Entry
+	35, // 43: spire.api.server.entry.v1.BatchUpdateEntryResponse.Result.status:type_name -> spire.api.types.Status
+	28, // 44: spire.api.server.entry.v1.BatchUpdateEntryResponse.Result.entry:type_name -> spire.api.types.Entry
+	35, // 45: spire.api.server.entry.v1.BatchDeleteEntryResponse.Result.status:type_name -> spire.api.types.Status
+	35, // 46: spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse.Result.status:type_name -> spire.api.types.Status
+	29, // 47: spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse.Result.template:type_name -> spire.api.types.SPIFFEIDTemplate
+	0,  // 48: spire.api.server.entry.v1.Entry.CountEntries:input_type -> spire.api.server.entry.v1.CountEntriesRequest
+	2,  // 49: spire.api.server.entry.v1.Entry.ListEntries:input_type -> spire.api.server.entry.v1.ListEntriesRequest
+	6,  // 50: spire.api.server.entry.v1.Entry.GetEntry:input_type -> spire.api.server.entry.v1.GetEntryRequest
+	7,  // 51: spire.api.server.entry.v1.Entry.BatchCreateEntry:input_type -> spire.api.server.entry.v1.BatchCreateEntryRequest
+	9,  // 52: spire.api.server.entry.v1.Entry.BatchUpdateEntry:input_type -> spire.api.server.entry.v1.BatchUpdateEntryRequest
+	11, // 53: spire.api.server.entry.v1.Entry.BatchDeleteEntry:input_type -> spire.api.server.entry.v1.BatchDeleteEntryRequest
+	13, // 54: spire.api.server.entry.v1.Entry.BatchCreateSPIFFEIDTemplate:input_type -> spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateRequest
+	4,  // 55: spire.api.server.entry.v1.Entry.ListSPIFFEIDTemplates:input_type -> spire.api.server.entry.v1.ListSPIFFEIDTemplatesRequest
+	15, // 56: spire.api.server.entry.v1.Entry.GetAuthorizedEntries:input_type -> spire.api.server.entry.v1.GetAuthorizedEntriesRequest
+	17, // 57: spire.api.server.entry.v1.Entry.SyncAuthorizedEntries:input_type -> spire.api.server.entry.v1.SyncAuthorizedEntriesRequest
+	1,  // 58: spire.api.server.entry.v1.Entry.CountEntries:output_type -> spire.api.server.entry.v1.CountEntriesResponse
+	3,  // 59: spire.api.server.entry.v1.Entry.ListEntries:output_type -> spire.api.server.entry.v1.ListEntriesResponse
+	28, // 60: spire.api.server.entry.v1.Entry.GetEntry:output_type -> spire.api.types.Entry
+	8,  // 61: spire.api.server.entry.v1.Entry.BatchCreateEntry:output_type -> spire.api.server.entry.v1.BatchCreateEntryResponse
+	10, // 62: spire.api.server.entry.v1.Entry.BatchUpdateEntry:output_type -> spire.api.server.entry.v1.BatchUpdateEntryResponse
+	12, // 63: spire.api.server.entry.v1.Entry.BatchDeleteEntry:output_type -> spire.api.server.entry.v1.BatchDeleteEntryResponse
+	14, // 64: spire.api.server.entry.v1.Entry.BatchCreateSPIFFEIDTemplate:output_type -> spire.api.server.entry.v1.BatchCreateSPIFFEIDTemplateResponse
+	5,  // 65: spire.api.server.entry.v1.Entry.ListSPIFFEIDTemplates:output_type -> spire.api.server.entry.v1.ListSPIFFEIDTemplatesResponse
+	16, // 66: spire.api.server.entry.v1.Entry.GetAuthorizedEntries:output_type -> spire.api.server.entry.v1.GetAuthorizedEntriesResponse
+	18, // 67: spire.api.server.entry.v1.Entry.SyncAuthorizedEntries:output_type -> spire.api.server.entry.v1.SyncAuthorizedEntriesResponse
+	58, // [58:68] is the sub-list for method output_type
+	48, // [48:58] is the sub-list for method input_type
+	48, // [48:48] is the sub-list for extension type_name
+	48, // [48:48] is the sub-list for extension extendee
+	0,  // [0:48] is the sub-list for field type_name
 }
 
 func init() { file_spire_api_server_entry_v1_entry_proto_init() }
@@ -1420,7 +1835,7 @@ func file_spire_api_server_entry_v1_entry_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_spire_api_server_entry_v1_entry_proto_rawDesc), len(file_spire_api_server_entry_v1_entry_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   21,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

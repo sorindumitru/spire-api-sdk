@@ -1,0 +1,19 @@
+syntax = "proto3";
+package spire.api.types;
+option go_package = "github.com/spiffe/spire-api-sdk/proto/spire/api/types";
+
+import "spire/api/types/selector.proto";
+import "spire/api/types/spiffeid.proto";
+
+message SPIFFEIDTemplate {
+    string id = 1;
+    string spiffe_id_template = 2;
+    spire.api.types.SPIFFEID parent_id = 3;
+    repeated spire.api.types.Selector selectors = 4;
+    repeated string federates_with = 5;
+    int32 x509_svid_ttl = 6;
+    int32 jwt_svid_ttl = 7;
+    int64 revision_number = 8;
+    bool store_svid = 9;
+    int64 created_at = 10;
+}

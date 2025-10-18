@@ -20,14 +20,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Entry_CountEntries_FullMethodName          = "/spire.api.server.entry.v1.Entry/CountEntries"
-	Entry_ListEntries_FullMethodName           = "/spire.api.server.entry.v1.Entry/ListEntries"
-	Entry_GetEntry_FullMethodName              = "/spire.api.server.entry.v1.Entry/GetEntry"
-	Entry_BatchCreateEntry_FullMethodName      = "/spire.api.server.entry.v1.Entry/BatchCreateEntry"
-	Entry_BatchUpdateEntry_FullMethodName      = "/spire.api.server.entry.v1.Entry/BatchUpdateEntry"
-	Entry_BatchDeleteEntry_FullMethodName      = "/spire.api.server.entry.v1.Entry/BatchDeleteEntry"
-	Entry_GetAuthorizedEntries_FullMethodName  = "/spire.api.server.entry.v1.Entry/GetAuthorizedEntries"
-	Entry_SyncAuthorizedEntries_FullMethodName = "/spire.api.server.entry.v1.Entry/SyncAuthorizedEntries"
+	Entry_CountEntries_FullMethodName                = "/spire.api.server.entry.v1.Entry/CountEntries"
+	Entry_ListEntries_FullMethodName                 = "/spire.api.server.entry.v1.Entry/ListEntries"
+	Entry_GetEntry_FullMethodName                    = "/spire.api.server.entry.v1.Entry/GetEntry"
+	Entry_BatchCreateEntry_FullMethodName            = "/spire.api.server.entry.v1.Entry/BatchCreateEntry"
+	Entry_BatchUpdateEntry_FullMethodName            = "/spire.api.server.entry.v1.Entry/BatchUpdateEntry"
+	Entry_BatchDeleteEntry_FullMethodName            = "/spire.api.server.entry.v1.Entry/BatchDeleteEntry"
+	Entry_BatchCreateSPIFFEIDTemplate_FullMethodName = "/spire.api.server.entry.v1.Entry/BatchCreateSPIFFEIDTemplate"
+	Entry_ListSPIFFEIDTemplates_FullMethodName       = "/spire.api.server.entry.v1.Entry/ListSPIFFEIDTemplates"
+	Entry_GetAuthorizedEntries_FullMethodName        = "/spire.api.server.entry.v1.Entry/GetAuthorizedEntries"
+	Entry_SyncAuthorizedEntries_FullMethodName       = "/spire.api.server.entry.v1.Entry/SyncAuthorizedEntries"
 )
 
 // EntryClient is the client API for Entry service.
@@ -60,6 +62,14 @@ type EntryClient interface {
 	//
 	// The caller must be local or present an admin X509-SVID.
 	BatchDeleteEntry(ctx context.Context, in *BatchDeleteEntryRequest, opts ...grpc.CallOption) (*BatchDeleteEntryResponse, error)
+	// Batch creates one or more entries.
+	//
+	// The caller must be local or present an admin X509-SVID.
+	BatchCreateSPIFFEIDTemplate(ctx context.Context, in *BatchCreateSPIFFEIDTemplateRequest, opts ...grpc.CallOption) (*BatchCreateSPIFFEIDTemplateResponse, error)
+	// Lists entries.
+	//
+	// The caller must be local or present an admin X509-SVID.
+	ListSPIFFEIDTemplates(ctx context.Context, in *ListSPIFFEIDTemplatesRequest, opts ...grpc.CallOption) (*ListSPIFFEIDTemplatesResponse, error)
 	// Gets the entries the caller is authorized for.
 	//
 	// The caller must present an active agent X509-SVID. See the Agent
@@ -153,6 +163,26 @@ func (c *entryClient) BatchDeleteEntry(ctx context.Context, in *BatchDeleteEntry
 	return out, nil
 }
 
+func (c *entryClient) BatchCreateSPIFFEIDTemplate(ctx context.Context, in *BatchCreateSPIFFEIDTemplateRequest, opts ...grpc.CallOption) (*BatchCreateSPIFFEIDTemplateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(BatchCreateSPIFFEIDTemplateResponse)
+	err := c.cc.Invoke(ctx, Entry_BatchCreateSPIFFEIDTemplate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *entryClient) ListSPIFFEIDTemplates(ctx context.Context, in *ListSPIFFEIDTemplatesRequest, opts ...grpc.CallOption) (*ListSPIFFEIDTemplatesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListSPIFFEIDTemplatesResponse)
+	err := c.cc.Invoke(ctx, Entry_ListSPIFFEIDTemplates_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *entryClient) GetAuthorizedEntries(ctx context.Context, in *GetAuthorizedEntriesRequest, opts ...grpc.CallOption) (*GetAuthorizedEntriesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAuthorizedEntriesResponse)
@@ -206,6 +236,14 @@ type EntryServer interface {
 	//
 	// The caller must be local or present an admin X509-SVID.
 	BatchDeleteEntry(context.Context, *BatchDeleteEntryRequest) (*BatchDeleteEntryResponse, error)
+	// Batch creates one or more entries.
+	//
+	// The caller must be local or present an admin X509-SVID.
+	BatchCreateSPIFFEIDTemplate(context.Context, *BatchCreateSPIFFEIDTemplateRequest) (*BatchCreateSPIFFEIDTemplateResponse, error)
+	// Lists entries.
+	//
+	// The caller must be local or present an admin X509-SVID.
+	ListSPIFFEIDTemplates(context.Context, *ListSPIFFEIDTemplatesRequest) (*ListSPIFFEIDTemplatesResponse, error)
 	// Gets the entries the caller is authorized for.
 	//
 	// The caller must present an active agent X509-SVID. See the Agent
@@ -256,6 +294,12 @@ func (UnimplementedEntryServer) BatchUpdateEntry(context.Context, *BatchUpdateEn
 }
 func (UnimplementedEntryServer) BatchDeleteEntry(context.Context, *BatchDeleteEntryRequest) (*BatchDeleteEntryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BatchDeleteEntry not implemented")
+}
+func (UnimplementedEntryServer) BatchCreateSPIFFEIDTemplate(context.Context, *BatchCreateSPIFFEIDTemplateRequest) (*BatchCreateSPIFFEIDTemplateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchCreateSPIFFEIDTemplate not implemented")
+}
+func (UnimplementedEntryServer) ListSPIFFEIDTemplates(context.Context, *ListSPIFFEIDTemplatesRequest) (*ListSPIFFEIDTemplatesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSPIFFEIDTemplates not implemented")
 }
 func (UnimplementedEntryServer) GetAuthorizedEntries(context.Context, *GetAuthorizedEntriesRequest) (*GetAuthorizedEntriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAuthorizedEntries not implemented")
@@ -392,6 +436,42 @@ func _Entry_BatchDeleteEntry_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Entry_BatchCreateSPIFFEIDTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BatchCreateSPIFFEIDTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EntryServer).BatchCreateSPIFFEIDTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Entry_BatchCreateSPIFFEIDTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EntryServer).BatchCreateSPIFFEIDTemplate(ctx, req.(*BatchCreateSPIFFEIDTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Entry_ListSPIFFEIDTemplates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSPIFFEIDTemplatesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EntryServer).ListSPIFFEIDTemplates(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Entry_ListSPIFFEIDTemplates_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EntryServer).ListSPIFFEIDTemplates(ctx, req.(*ListSPIFFEIDTemplatesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Entry_GetAuthorizedEntries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAuthorizedEntriesRequest)
 	if err := dec(in); err != nil {
@@ -447,6 +527,14 @@ var Entry_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BatchDeleteEntry",
 			Handler:    _Entry_BatchDeleteEntry_Handler,
+		},
+		{
+			MethodName: "BatchCreateSPIFFEIDTemplate",
+			Handler:    _Entry_BatchCreateSPIFFEIDTemplate_Handler,
+		},
+		{
+			MethodName: "ListSPIFFEIDTemplates",
+			Handler:    _Entry_ListSPIFFEIDTemplates_Handler,
 		},
 		{
 			MethodName: "GetAuthorizedEntries",

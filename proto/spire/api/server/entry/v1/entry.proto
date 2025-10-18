@@ -6,6 +6,7 @@ import "spire/api/types/entry.proto";
 import "spire/api/types/federateswith.proto";
 import "spire/api/types/selector.proto";
 import "spire/api/types/spiffeid.proto";
+import "spire/api/types/spiffeidtemplate.proto";
 import "spire/api/types/status.proto";
 import "google/protobuf/wrappers.proto";
 
@@ -40,6 +41,16 @@ service Entry {
     //
     // The caller must be local or present an admin X509-SVID.
     rpc BatchDeleteEntry(BatchDeleteEntryRequest) returns (BatchDeleteEntryResponse);
+
+    // Batch creates one or more entries.
+    //
+    // The caller must be local or present an admin X509-SVID.
+    rpc BatchCreateSPIFFEIDTemplate(BatchCreateSPIFFEIDTemplateRequest) returns (BatchCreateSPIFFEIDTemplateResponse);
+
+    // Lists entries.
+    //
+    // The caller must be local or present an admin X509-SVID.
+    rpc ListSPIFFEIDTemplates(ListSPIFFEIDTemplatesRequest) returns (ListSPIFFEIDTemplatesResponse);
 
     // Gets the entries the caller is authorized for.
     //
@@ -119,6 +130,41 @@ message ListEntriesResponse {
     string next_page_token = 2;
 }
 
+message ListSPIFFEIDTemplatesRequest {
+    message Filter {
+        spire.api.types.SPIFFEID by_spiffe_id = 1;
+        spire.api.types.SPIFFEID by_parent_id = 2;
+        spire.api.types.SelectorMatch by_selectors = 3;
+        spire.api.types.FederatesWithMatch by_federates_with = 4;
+        google.protobuf.StringValue by_hint = 5;
+        google.protobuf.BoolValue by_downstream = 6;
+    }
+
+    // Filters the entries returned in the response.
+    Filter filter = 1;
+
+    // An output mask indicating the entry fields set in the response.
+    spire.api.types.EntryMask output_mask = 2;
+
+    // The maximum number of results to return. The server may further
+    // constrain this value, or if zero, choose its own.
+    int32 page_size = 3;
+
+    // The next_page_token value returned from a previous request, if any.
+    string page_token = 4;
+}
+
+message ListSPIFFEIDTemplatesResponse {
+    // The list of entries.
+    repeated spire.api.types.SPIFFEIDTemplate templates = 1;
+
+    // The page token for the next request. Empty if there are no more results.
+    // This field should be checked by clients even when a page_size was not
+    // requested, since the server may choose its own (see page_size).
+    string next_page_token = 2;
+}
+
+
 message GetEntryRequest {
     // Required. ID of the entry to get.
     string id = 1;
@@ -195,6 +241,30 @@ message BatchDeleteEntryResponse {
     }
 
     // Result for each entry ID in the request (order is maintained).
+    repeated Result results = 1;
+}
+
+message BatchCreateSPIFFEIDTemplateRequest {
+    // The entries to be created. If no entry ID is provided, one will be 
+    // generated.
+    repeated spire.api.types.SPIFFEIDTemplate templates = 1;
+}
+
+message BatchCreateSPIFFEIDTemplateResponse {
+    message Result {
+        // The status of creating the entry. If status code will be
+        // ALREADY_EXISTS if a similar entry already exists. An entry is
+        // similar if it has the same spiffe_id, parent_id, and selectors.
+        spire.api.types.Status status = 1;
+
+        // The entry that was created (.e.g status code is OK) or that already
+        // exists (i.e. status code is ALREADY_EXISTS).
+        //
+        // If the status code is any other value, this field will not be set.
+        spire.api.types.SPIFFEIDTemplate template = 2;
+    }
+
+    // Result for each entry in the request (order is maintained).
     repeated Result results = 1;
 }
 
